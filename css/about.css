@@ -1,0 +1,27 @@
+#title-border {
+    width: 100%;
+    border-bottom: 2px solid white;
+    position: absolute;
+    z-index: 8888;
+}
+
+#concept-image {
+    width: 80%;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    text-align: left;
+}
+
+#concept-image img {
+    max-width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    #title-border {
+        width: 96%;
+    }
+    #title-border h1 {
+        padding-right: 0px;
+    }
+}

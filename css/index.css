@@ -1,0 +1,81 @@
+video#bgvid {
+    left: -100px !important;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    background: url(img/smoke-bg.jpg) no-repeat;
+    background-size: cover;
+}
+
+
+
+}
+@media screen and (max-device-width: 800px) {
+    html {
+        background: url(img/smoke-bg.jpg) #000 no-repeat center center fixed;
+    }
+
+    #bgvid {
+        display: none;
+    }
+}
+/* SVG-anime */
+#line {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 50%;
+    margin: 80px 0 0 -175px;
+}
+#index-logo {
+    position: absolute;
+    bottom: 20%;
+    left: 40%;
+    color: white;
+    letter-spacing: -5px;
+    z-index: 100;
+    line-height: 0.5em;
+}
+@media screen and (max-width: 768px) {
+
+    #line {
+        width: 300px;
+        height: 300px;
+        position: absolute;
+        left: 10%;
+        margin: 80px 0px;
+    }
+
+    #index-logo {
+        bottom: 10%;
+        left: 12%;
+        letter-spacing: 0px;
+        z-index: 100;
+        line-height: 1em;
+    }
+}
+/* tayping */
+.tgt {
+    opacity: 0;
+}
+.tgt span {
+    opacity: 0;
+}
+
+
+/* logo animation*/
+#tsubachalogo {
+    /* ５秒かけてアニメーションする */
+
+    -webkit-animation-duration: 5s;
+    animation-duration: 5s;
+    /* 4秒待ってからアニメーションする */
+
+    -webkit-animation-duration: 4s;
+    animation-delay: 4s;
+}

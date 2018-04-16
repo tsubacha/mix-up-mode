@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" href="favicon/favicon.ico">
+    <link rel="apple-touch-icon" href="favicon/apple-touch-icon-152x152.png" sizes="152x152">
+    <link rel="icon" href="favicon/android-chrome-192x192.png" sizes="192x192" type="image/png">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="content-type" charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="jquery.lazylinepainter-1.7.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.min.css">
+    <!-- スクロール -->
+    <script type="text/javascript" src="jquery-scrollmenu/js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="jquery-scrollmenu/js/jquery.color.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+
+        //Background color, mouseover and mouseout
+        var colorOver = '#31b8da';
+        var colorOut = '#1f1f1f';
+
+        //Padding, mouseover
+        var padLeft = '20px';
+        var padRight = '20px';
+
+        //Default Padding
+        var defpadLeft = $('#menu li a').css('paddingLeft');
+        var defpadRight = $('#menu li a').css('paddingRight');
+
+        //Animate the LI on mouse over, mouse out
+        $('#menu li').click(function() {
+            //Make LI clickable
+            window.location = $(this).find('a').attr('href');
+
+        }).mouseover(function() {
+
+            //mouse over LI and look for A element for transition
+            $(this).find('a')
+                .animate({ paddingLeft: padLeft, paddingRight: padRight }, { queue: false, duration: 100 })
+                .animate({ backgroundColor: colorOver }, { queue: false, duration: 200 });
+
+        }).mouseout(function() {
+
+            //mouse oout LI and look for A element and discard the mouse over transition
+            $(this).find('a')
+                .animate({ paddingLeft: defpadLeft, paddingRight: defpadRight }, { queue: false, duration: 100 })
+                .animate({ backgroundColor: colorOut }, { queue: false, duration: 200 });
+        });
+
+        //Scroll the menu on mouse move above the #sidebar layer
+        $('#sidebar').mousemove(function(e) {
+
+            //Sidebar Offset, Top value
+            var s_top = parseInt($('#sidebar').offset().top);
+
+            //Sidebar Offset, Bottom value
+            var s_bottom = parseInt($('#sidebar').height() + s_top);
+
+            //Roughly calculate the height of the menu by multiply height of a single LI with the total of LIs
+            var mheight = parseInt($('#menu li').height() * $('#menu li').length);
+
+            //I used this coordinate and offset values for debuggin
+            $('#debugging_mouse_axis').html("X Axis : " + e.pageX + " | Y Axis " + e.pageY);
+            $('#debugging_status').html(Math.round(((s_top - e.pageY) / 100) * mheight / 2));
+
+            //Calculate the top value
+            //This equation is not the perfect, but it 's very close	
+            var top_value = Math.round(((s_top - e.pageY) / 100) * mheight / 2);
+
+            //Animate the #menu by chaging the top value
+            $('#menu').animate({ top: top_value }, { queue: false, duration: 500 });
+        });
+
+
+    });
+    </script>
+    <!-- スマホメニュー -->
+    <link rel="stylesheet" href="css/drawer.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.1.3/iscroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.1.0/js/drawer.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+</head>
+
+<body>
+    <div class="drawer drawer--left">
+        <header role="banner">
+            <button type="button" class="drawer-toggle drawer-hamburger">
+                <span class="sr-only">toggle navigation</span>
+                <span class="drawer-hamburger-icon"></span>
+            </button>
+            <nav class="drawer-nav" role="navigation">
+                <ul class="drawer-menu">
+                    <li><a class="drawer-brand" href="#">MENU</a></li>
+                    <li><a class="drawer-menu-item" href="#">ABOUT</a></li>
+                    <li><a class="drawer-menu-item" href="#">Concept</a></li>
+                    <li><a class="drawer-menu-item" href="#">Accesories</a></li>
+                    <li><a class="drawer-menu-item" href="#">Store</a></li>
+                    <li><a class="drawer-menu-item" href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div id="debugging_mouse_axis"></div>
+        <div id="debugging_status"></div>
+        <div id="sidebar">
+            <ul id="menu">
+                <li><a href="#">MENU 1 <span> / 2010</span></a></li>
+                <li><a href="#">MENU SIZE 2 <span> / 2010</span></a></li>
+                <li><a href="#">MENU SIZE LONG 3 <span> / 2010</span></a></li>
+                <li><a href="#">MENU 4 <span> / 2010</span></a></li>
+                <li><a href="#">MENU SIZE 5 <span> / 2010</span></a></li>
+                <li><a href="#">MENU SIZE LONG 6 <span> / 2010</span></a></li>
+                <li><a href="#">MENU 7 <span> / 2010</span></a></li>
+                <li><a href="#">MENU SIZE 8 <span> / 2010</span></a></li>
+                <li><a href="#">MENU SIZE LONG 9 <span> / 2010</span></a></li>
+                <li><a href="#">MENU 10 <span> / 2010</span></a></li>
+                <li><a href="#">MENU SIZE 11 <span> / 2010</span></a></li>
+                <li><a href="#">MENU SIZE LONG 12 <span> / 2010</span></a></li>
+                <li><a href="#">MENU 13 <span> / 2010</span></a></li>
+                <li><a href="#">SUPER LONG MENU MENU MENU MENU SIZE 14 <span> / 2010</span></a></li>
+                <li><a href="#">MENU SIZE LONG 15 <span> / 2010</span></a></li>
+                <li><a href="#">MENU 16 <span> / 2010</span></a></li>
+                <li><a href="#">MENU SIZE 17 <span> / 2010</span></a></li>
+                <li><a href="#">MENU SIZE LONG 18 <span> / 2010</span></a></li>
+                <li><a href="#">MENU 19 <span> / 2010</span></a></li>
+                <li><a href="#">MENU SIZE 20 <span> / 2010</span></a></li>
+                <li><a href="#">MENU SIZE LONG 21 <span> / 2010</span></a></li>
+                <li><a href="#">MENU 22 <span> / 2010</span></a></li>
+                <li><a href="#">MENU SIZE 5 <span> / 2010</span></a></li>
+                <li><a href="#">MENU SIZE LONG 23 <span> / 2010</span></a></li>
+                <li><a href="#">MENU 24 <span> / 2010</span></a></li>
+                <li><a href="#">MENU SIZE 25 <span> / 2010</span></a></li>
+                <li><a href="#">MENU SIZE LONG 26 <span> / 2010</span></a></li>
+                <li><a href="#">MENU 27 <span> / 2010</span></a></li>
+                <li><a href="#">MENU SIZE 28 <span> / 2010</span></a></li>
+                <li><a href="#">MENU SIZE LONG 29 <span> / 2010</span></a></li>
+                <li><a href="#">MENU 30 <span> / 2010</span></a></li>
+                <li><a href="#">MENU SIZE 31 <span> / 2010</span></a></li>
+                <li><a href="#">MENU SIZE LONG 32 <span> / 2010</span></a></li>
+                <li><a href="#">MENU 33 <span> / 2010</span></a></li>
+                <li><a href="#">MENU SIZE 34 <span> / 2010</span></a></li>
+                <li><a href="#">MENU SIZE LONG 35 <span> / 2010</span></a></li>
+            </ul>
+        </div>
+        <div style="font-size:12px;color:#ccc"></div>
+        <div id="index">
+            <div id="line"></div>
+            <div id="index-logo">
+                <div id="tsubachalogo" class="animated fadeIn"><img src="img/tsubachalogo.png"></div>
+                <p class="tgt"># Που μου αρέσει!</p>
+                <p class="tgt"># Θέλω να ζήσω υπάκουα ελεύθερα</p>
+                <p class="tgt"># Δεν επιτρέπει με ενοχλούν</p>
+                <p class="tgt"># Μου μόνο ιδιαίτερο κόσμο:)</p>
+            </div>
+        </div>
+        <video autoplay loop poster="img/smoke-bg.jpg" id="bgvid">
+            <source src="polina.webm" type="video/webm">
+            <source src="smoke.mp4" type="video/mp4">
+        </video>
+        <script>
+        $(window).bind('load', function() {
+            // ここで文字を<span></span>で囲む
+            $('.tgt').children().andSelf().contents().each(function() {
+                if (this.nodeType == 3) {
+                    $(this).replaceWith($(this).text().replace(/(\S)/g, '<span>$1</span>'));
+                }
+            });
+            // 一文字ずつフェードインさせる
+            $('.tgt').css({ 'opacity': 1 });
+            for (var i = 0; i <= $('.tgt').children().size(); i++) {
+                $('.tgt').children('span:eq(' + i + ')').delay(50 * i).animate({ 'opacity': 1 }, 50);
+            };
+        });
+        </script>
+        <script>
+        $(document).ready(function() {
+            $('.drawer').drawer();
+        });
+        </script>
+</body>
+
+</html>
